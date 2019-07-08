@@ -25,8 +25,7 @@ func main() {
 	r.HandleFunc("/colors", HandleGetColors).Methods(http.MethodGet, http.MethodPut, http.MethodPatch, http.MethodOptions)
 	r.Use(mux.CORSMethodMiddleware(r))
 
-	err := http.ListenAndServe(":80", r)
-	panic(err)
+	http.ListenAndServe(":8081", r)
 
 
 
