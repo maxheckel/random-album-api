@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/EdlinOrg/prominentcolor"
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"image"
 	"io"
@@ -25,7 +26,7 @@ func main() {
 	r.HandleFunc("/colors", HandleGetColors).Methods(http.MethodGet, http.MethodPut, http.MethodPatch, http.MethodOptions)
 	r.Use(mux.CORSMethodMiddleware(r))
 
-	http.ListenAndServe(":8081", r)
+	http.ListenAndServe(":8081", handlers.CORS()(r))
 
 
 
